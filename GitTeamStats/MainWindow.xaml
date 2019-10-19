@@ -6,8 +6,21 @@
         xmlns:local="clr-namespace:GitTeamStats"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" Margin="155,0,0,271" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75"/>
+    <Grid Name="Homepage">
+
+        <Rectangle x:Name="Backgorund" Fill="#FFD1D1F3" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="headerBar" Fill="#FF323232" Grid.ColumnSpan="2" Height="41" VerticalAlignment="Top"/>
+        <Label x:Name="headerLbl" Content="Github - Team Stats Viewer" VerticalAlignment="Top" Height="41" FontSize="24" FontFamily="Times New Roman" Foreground="#FFF0F0F0" FontWeight="Bold" HorizontalAlignment="Left" Width="297"/>
+
+        <Grid x:Name="LaunchPage" Visibility="Visible">
+            <ComboBox x:Name="prevProjbox" Margin="150,162,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="491" Height="34" VerticalAlignment="Top"/>
+            <Button x:Name="viewstatBtn" Content="VIEW STATS" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Margin="327,214,0,0" Height="40" FontSize="16" FontWeight="Bold" Background="#FF1D8CFB" Foreground="#FFFFF1F1"/>
+            <TextBox x:Name="directoryTxt" HorizontalAlignment="Left" Height="23" Margin="514,344,0,0" TextWrapping="Wrap" Text="Browse for Directory" VerticalAlignment="Top" Width="255" Background="#FFC3C3C3" Foreground="#FF747474"/>
+            <Button x:Name="bowseBtn" Content="Choose Folder" HorizontalAlignment="Left" Margin="514,372,0,0" VerticalAlignment="Top" Width="116"/>
+            <Button x:Name="linkprojBtn" Content="Link Project" HorizontalAlignment="Left" Margin="653,372,0,0" VerticalAlignment="Top" Width="116"/>
+            <Label Content="Select Previously Viewed Project" HorizontalAlignment="Left" Margin="150,166,0,0" VerticalAlignment="Top" Width="190"/>
+        </Grid>
+
 
     </Grid>
 </Window>
