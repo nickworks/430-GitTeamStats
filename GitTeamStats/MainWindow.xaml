@@ -19,6 +19,6 @@
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding}"/>
-        <Button Content="{Binding Test}" HorizontalAlignment="Left" Margin="347,216,0,0" VerticalAlignment="Top" Width="302" Height="116"/>
+        <!--<Button Content="{Binding Test}" HorizontalAlignment="Left" Margin="347,216,0,0" VerticalAlignment="Top" Width="302" Height="116"/>-->
     </Grid>
 </Window>

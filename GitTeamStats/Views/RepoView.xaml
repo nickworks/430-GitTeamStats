@@ -6,13 +6,8 @@
              xmlns:local="clr-namespace:GitTeamStats.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Red" Offset="0"/>
-                <GradientStop Color="Black" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Background="White">
+        
 
     </Grid>
 </UserControl>
