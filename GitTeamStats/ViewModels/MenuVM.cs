@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GitTeamStats.ViewModels
 {
-    class LoginVM
-    { 
+    class MenuVM
+    {
 
     }
 }

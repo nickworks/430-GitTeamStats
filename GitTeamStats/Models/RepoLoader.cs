@@ -44,6 +44,7 @@ namespace GitTeamStats.Models {
                 return repo;
             } catch (RepositoryNotFoundException e) {
                 // TODO: handle error
+                Console.WriteLine(e);
             }
             return null;
         }

@@ -26,7 +26,7 @@ namespace GitTeamStats.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).DataContext = new RepoVM();
         }

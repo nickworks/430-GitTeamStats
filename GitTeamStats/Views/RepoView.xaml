@@ -2,12 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:GitTeamStats.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:GitTeamStats.Views"
+             xmlns:viewmodels="clr-namespace:GitTeamStats.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-        
-
+    <Grid Background="FloralWhite">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75px"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <views:MenuBar Grid.Row="0" Command="{Binding OpenRepoCommand}"></views:MenuBar>
     </Grid>
 </UserControl>
