@@ -38,6 +38,7 @@ namespace GitTeamStats.Views
                 SetValue(CommandProperty, value);
             }
         }
+
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).DataContext = new LoginVM();

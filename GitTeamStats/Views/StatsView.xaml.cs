@@ -1,5 +1,4 @@
-﻿using GitTeamStats.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace GitTeamStats.Views
 {
     /// <summary>
-    /// Interaction logic for RepoView.xaml
+    /// Interaction logic for StatsView.xaml
     /// </summary>
-    public partial class RepoView : UserControl
+    public partial class StatsView : UserControl
     {
-        public RepoView()
+        public StatsView()
         {
             InitializeComponent();
         }

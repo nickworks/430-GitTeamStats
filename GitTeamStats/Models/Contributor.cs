@@ -14,11 +14,11 @@ namespace GitTeamStats.Models {
         /// <summary>
         /// The username of the contributor.
         /// </summary>
-        public string name;
+        public string name { get; set; }
         /// <summary>
         /// The email address of the contributor.
         /// </summary>
-        public string email;
+        public string email { get; set; }
         /// <summary>
         /// A list of all commits authored by the contributor.
         /// </summary>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="GitTeamStats.Views.StatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GitTeamStats.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="500">
+    <Border Background="Snow" BorderBrush="Black" BorderThickness="2">
+        <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+            <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor.name}" MinWidth="100" Width="150" Margin="50,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <Label Margin="0,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Email:</Label>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor.email}" MinWidth="100" Width="150" Margin="50,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <Label Margin="0,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Commits:</Label>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor.commits}" MinWidth="140" Margin="60,55,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+        </Grid>
+    </Border>
+</UserControl>

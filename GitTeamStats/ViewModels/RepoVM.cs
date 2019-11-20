@@ -1,41 +1,32 @@
 ﻿using GitTeamStats.Models;
 using LibGit2Sharp;
 using Microsoft.VisualStudio.PlatformUI;
-using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 
 namespace GitTeamStats.ViewModels
 {
-    class RepoVM
+    class RepoVM : INotifyPropertyChanged
     {
-        private string _repoText = "";
         public Repository Repository;
-        public List<Contributor> Contributors;
-        public Contributor Contributor;
+        private Contributor _selectedContributor;
+        public Contributor SelectedContributor { get { return _selectedContributor; } set { _selectedContributor = value; NotifyPropertyChanged(); } }
+        private ObservableCollection<Contributor> _contributors;
+        public ObservableCollection<Contributor> Contributors { get { return _contributors; } set { _contributors = value; NotifyPropertyChanged(); } }
+        private string _repoText = "";
+        public string RepoText { get { if (string.IsNullOrEmpty(_repoText)) return "No Repository Selected"; else return _repoText; } set { _repoText = value; NotifyPropertyChanged(); } }
         public ICommand OpenRepoCommand { get; set; }
-        public string RepoText
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_repoText))
-                    return "No Repository Selected";
-                else
-                    return _repoText;
-            }
-            set
-            {
-                _repoText = value;
-            }
-        }
 
         public RepoVM()
         {
             OpenRepoCommand = new DelegateCommand(OpenRepoCommandExecute);
+            Contributors = new ObservableCollection<Contributor>();
         }
 
         private void OpenRepoCommandExecute()
@@ -44,15 +35,24 @@ namespace GitTeamStats.ViewModels
 
             if (Repository != null)
             {
-                MessageBox.Show("Repo loaded");
-                RepoText = Repository.Head.RemoteName;
-                Contributors = Contributor.GetAll(Repository);
+                RepoText = Repository.Network.Remotes.First().Url;
+                var contributors = Contributor.GetAll(Repository);
+                Contributors.Clear();
+                foreach (var item in contributors) { Contributors.Add(item); }
             }
             else
             {
-                MessageBox.Show("Repo not loaded");
                 RepoText = "";
+                Contributors.Clear();
+                SelectedContributor = null;
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
