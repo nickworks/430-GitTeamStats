@@ -22,6 +22,7 @@ namespace GitTeamStats.Models {
         /// <summary>
         /// A list of all commits authored by the contributor.
         /// </summary>
+        public string test { get { return commits.Count.ToString(); } set { } }
         public List<Commit> commits = new List<Commit>();
         /// <summary>
         /// This constructor creates a contributor from a supplied commit.
