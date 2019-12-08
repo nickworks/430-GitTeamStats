@@ -13,7 +13,15 @@
             <Label Margin="0,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Email:</Label>
             <TextBox Text="{Binding Path=DataContext.SelectedContributor.email}" MinWidth="100" Width="150" Margin="50,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
             <Label Margin="0,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Commits:</Label>
-            <TextBox Text="{Binding Path=DataContext.SelectedContributor.test}" MinWidth="140" Margin="60,55,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor.numberOfCommits}" MinWidth="140" Margin="60,55,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <Label Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">% of Commits:</Label>
+            <TextBox Text="{Binding Path=DataContext.PercentCommits}" MinWidth="110" Margin="90,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <Label Margin="0,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Lines Added</Label>
+            <TextBox Text="{Binding Path=DataContext.LinesAdded}" MinWidth="140" Margin="60,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <Label Margin="0,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Lines Deleted</Label>
+            <TextBox Text="{Binding Path=DataContext.LinesDeleted}" MinWidth="140" Margin="60,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <Label Margin="0,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Commits:</Label>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor.test}" MinWidth="140" Margin="60,155,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
         </Grid>
     </Border>
 </UserControl>
