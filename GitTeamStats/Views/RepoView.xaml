@@ -6,7 +6,7 @@
              xmlns:views="clr-namespace:GitTeamStats.Views"
              xmlns:viewmodels="clr-namespace:GitTeamStats.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="475" d:DesignWidth="800">
     <Grid Background="FloralWhite">
         <Grid.RowDefinitions>
             <RowDefinition Height="75px"></RowDefinition>
