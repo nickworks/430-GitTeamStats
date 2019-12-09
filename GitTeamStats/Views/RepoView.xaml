@@ -13,8 +13,10 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <views:MenuBar Grid.Row="0" Command="{Binding OpenRepoCommand}"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Content="Contributors" Grid.Row="1"/>
-        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,41,0,0" Grid.Row="1" Width="120" ItemsSource="{Binding Path=Contributors}" SelectedItem="{Binding Path=SelectedContributor}" DisplayMemberPath="name"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Content="Contributor 1" Grid.Row="1"/>
+        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,40,0,0" Grid.Row="1" Width="120" ItemsSource="{Binding Path=Contributors}" SelectedItem="{Binding Path=SelectedContributor1}" DisplayMemberPath="name"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,90,0,0" Content="Contributor 2" Grid.Row="1"/>
+        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,120,0,0" Grid.Row="1" Width="120" ItemsSource="{Binding Path=Contributors}" SelectedItem="{Binding Path=SelectedContributor2}" DisplayMemberPath="name"/>
         <views:StatsView Grid.Row="1" Margin="150, 10, 10, 60"/>
     </Grid>
 </UserControl>

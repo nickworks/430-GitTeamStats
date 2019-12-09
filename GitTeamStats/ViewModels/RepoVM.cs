@@ -15,8 +15,10 @@ namespace GitTeamStats.ViewModels
     class RepoVM : INotifyPropertyChanged
     {
         public Repository Repository;
-        private Contributor _selectedContributor;
-        public Contributor SelectedContributor { get { return _selectedContributor; } set { _selectedContributor = value; UpdateContributorStats(); NotifyPropertyChanged(); } }
+        private Contributor _selectedContributor1;
+        public Contributor SelectedContributor1 { get { return _selectedContributor1; } set { _selectedContributor1 = value; UpdateContributorStats(SelectedContributor1); NotifyPropertyChanged(); } }
+        private Contributor _selectedContributor2;
+        public Contributor SelectedContributor2 { get { return _selectedContributor2; } set { _selectedContributor2 = value; UpdateContributorStats(SelectedContributor2); NotifyPropertyChanged(); } }
         private ObservableCollection<Contributor> _contributors;
         public ObservableCollection<Contributor> Contributors { get { return _contributors; } set { _contributors = value; NotifyPropertyChanged(); } }
         private string _repoText = "";
@@ -30,25 +32,53 @@ namespace GitTeamStats.ViewModels
         public int LinesAdded { get { return _linesAdded; } set { _linesAdded = value; NotifyPropertyChanged(); } }
         private int _linesDeleted;
         public int LinesDeleted { get { return _linesDeleted; } set { _linesDeleted = value; NotifyPropertyChanged(); } }
+        private Dictionary<string, int> _edittedFiles { get; set; }
+        public Dictionary<string, int> EdittedFiles { get { return _edittedFiles; } set { _edittedFiles = value; NotifyPropertyChanged(); } }
+        private EdittedFiles _selectedFile { get; set; }
+        public EdittedFiles SelectedFile { get { return _selectedFile; } set { _selectedFile = value; NotifyPropertyChanged(); } }
 
         public RepoVM()
         {
             OpenRepoCommand = new DelegateCommand(OpenRepoCommandExecute);
             Contributors = new ObservableCollection<Contributor>();
+            _edittedFiles = new Dictionary<string, int>();
+            EdittedFiles = new Dictionary<string, int>();
         }
 
-        private void UpdateContributorStats()
+        private void UpdateContributorStats(Contributor contributor)
         {
-            Tree commitTree = Repository.Head.Tip.Tree; // Main Tree
-            Tree parentCommitTree = Repository.Head.Tip.Parents.First().Tree; // Secondary Tree
+            EdittedFiles.Clear();
+            for (int i = 0; i < contributor.commits.Count; i++)
+            {
+                Tree t1 = contributor.commits[i].Tree;
+                if (contributor.commits[i].Parents.Count() > 0)
+                {
+                    Tree t2 = contributor.commits[i].Parents.First().Tree;
 
-            var patch = Repository.Diff.Compare<TreeChanges>(parentCommitTree, commitTree); // Difference
-            LinesDeleted = patch.Deleted.Count();
-            Debug.Print(LinesDeleted.ToString());
-            LinesAdded = patch.Added.Count();
-            Debug.Print(LinesAdded.ToString());
+                    var patch = Repository.Diff.Compare<Patch>(t2, t1);
+                    LinesAdded = patch.LinesAdded;
+                    LinesDeleted = patch.LinesDeleted;
 
-            PercentCommits = (double)_selectedContributor.numberOfCommits / (double)Repository.Commits.Count();
+                    foreach (var ptch in patch)
+                    {
+                        if (EdittedFiles.ContainsKey(ptch.Path))
+                        {
+                            EdittedFiles[ptch.Path]++;
+                        }
+                        else
+                        {
+                            EdittedFiles.Add(ptch.Path, 1);
+                        }
+                    }
+                }
+                else
+                {
+                    LinesAdded = 0;
+                    LinesDeleted = 0;
+                }
+            }
+
+            PercentCommits = (double)contributor.numberOfCommits / (double)Repository.Commits.Count();
         }
 
         private void OpenRepoCommandExecute()
@@ -68,7 +98,8 @@ namespace GitTeamStats.ViewModels
                 NumRepoCommits = 0;
                 RepoText = "";
                 Contributors.Clear();
-                SelectedContributor = null;
+                SelectedContributor1 = null;
+                SelectedContributor2 = null;
             }
         }
 

@@ -8,20 +8,43 @@
              d:DesignHeight="350" d:DesignWidth="500">
     <Border Background="Snow" BorderBrush="Black" BorderThickness="2">
         <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
-            <TextBox Text="{Binding Path=DataContext.SelectedContributor.name}" MinWidth="100" Width="150" Margin="50,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor1.name}" Margin="50,5,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
             <Label Margin="0,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Email:</Label>
-            <TextBox Text="{Binding Path=DataContext.SelectedContributor.email}" MinWidth="100" Width="150" Margin="50,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor1.email}" Margin="50,30,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
             <Label Margin="0,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Commits:</Label>
-            <TextBox Text="{Binding Path=DataContext.SelectedContributor.numberOfCommits}" MinWidth="140" Margin="60,55,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.SelectedContributor1.numberOfCommits}" Margin="60,55,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
             <Label Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">% of Commits:</Label>
-            <TextBox Text="{Binding Path=DataContext.PercentCommits}" MinWidth="110" Margin="90,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.PercentCommits}" Margin="90,80,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
             <Label Margin="0,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Lines Added</Label>
-            <TextBox Text="{Binding Path=DataContext.LinesAdded}" MinWidth="140" Margin="60,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.LinesAdded}" Margin="80,105,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
             <Label Margin="0,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Lines Deleted</Label>
-            <TextBox Text="{Binding Path=DataContext.LinesDeleted}" MinWidth="140" Margin="60,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
-            <Label Margin="0,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Commits:</Label>
-            <TextBox Text="{Binding Path=DataContext.SelectedContributor.test}" MinWidth="140" Margin="60,155,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"></TextBox>
+            <TextBox Text="{Binding Path=DataContext.LinesDeleted}" Margin="85,130,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Margin="0,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Editted Files:</Label>
+            <ComboBox Name="FileSelector" ItemsSource="{Binding Path=DataContext.EdittedFiles}" DisplayMemberPath="Key" Margin="80,155,10,0" VerticalAlignment="Top"/>
+            <Label Margin="20,175,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Instances:</Label>
+            <TextBox Text="{Binding ElementName=FileSelector, Path=SelectedItem.Value, Mode=OneWay}" Margin="100,180,10,0" VerticalAlignment="Top"/>
+
+            <Label Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
+            <TextBox Grid.Column="1" Text="{Binding Path=DataContext.SelectedContributor2.name}" Margin="50,5,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Grid.Column="1" Margin="0,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Email:</Label>
+            <TextBox Grid.Column="1" Text="{Binding Path=DataContext.SelectedContributor2.email}" Margin="50,30,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Grid.Column="1" Margin="0,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Commits:</Label>
+            <TextBox Grid.Column="1" Text="{Binding Path=DataContext.SelectedContributor2.numberOfCommits}" Margin="60,55,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Grid.Column="1" Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">% of Commits:</Label>
+            <TextBox Grid.Column="1" Text="{Binding Path=DataContext.PercentCommits}" Margin="90,80,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Grid.Column="1" Margin="0,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Lines Added</Label>
+            <TextBox Grid.Column="1" Text="{Binding Path=DataContext.LinesAdded}" Margin="80,105,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Grid.Column="1" Margin="0,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Lines Deleted</Label>
+            <TextBox Grid.Column="1" Text="{Binding Path=DataContext.LinesDeleted}" Margin="85,130,10,0" VerticalAlignment="Top" IsReadOnly="True"/>
+            <Label Grid.Column="1" Margin="0,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Editted Files:</Label>
+            <ComboBox Grid.Column="1" Name="FileSelector2" ItemsSource="{Binding Path=DataContext.EdittedFiles}" DisplayMemberPath="Key" Margin="80,155,10,0" VerticalAlignment="Top"/>
+            <Label Grid.Column="1" Margin="20,175,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Instances:</Label>
+            <TextBox Grid.Column="1" Text="{Binding ElementName=FileSelector2, Path=SelectedItem.Value, Mode=OneWay}" Margin="100,180,10,0" VerticalAlignment="Top"/>
         </Grid>
     </Border>
 </UserControl>
